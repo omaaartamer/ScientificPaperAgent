@@ -1,7 +1,7 @@
 from flask import Blueprint, request, Response, render_template, jsonify, send_from_directory
 from flask_cors import CORS
 from flaskApp.config import Config
-from agentAll import run_agent
+from agent import run_agent
 import requests
 import json
 import time

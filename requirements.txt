@@ -1,0 +1,14 @@
+flask
+flask-cors
+python-dotenv
+urllib3
+pdfplumber
+ipython
+langchain-core
+langchain-community
+langchain
+langgraph
+pydantic
+ollama
+requests
+markdown
