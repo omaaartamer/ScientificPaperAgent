@@ -21,7 +21,6 @@ def index():
 def chat():
     """Handle web chat requests"""
     try:
-        all_start = time.time()
         data = request.json
         message = data.get('message')
         
@@ -30,12 +29,8 @@ def chat():
                 'status': 'error',
                 'message': 'No message provided'
             }), 400 
-        start = time.time()
-        response = asyncio.run(run_agent(message))
-        end = time.time()
 
-        #print('WEB endpoint - response generation: ', end-start)
-        #print('WEB endpoint - response generation: ', end-all_start)
+        response = asyncio.run(run_agent(message))
 
         return jsonify({
             'status': 'success',
@@ -47,6 +42,7 @@ def chat():
             'status': 'error',
             'message': str(e)
         }), 500
+
         
 @web_bp.route('/static/<path:path>')
 def send_static(path):
