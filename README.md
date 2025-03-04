@@ -137,17 +137,10 @@ While the integration of tools and API is functional, the locally hosted Mistral
 
 1. **Hallucinations**:
    - Generated paper titles and authors that don't exist
-   - Created sequential DOI numbers
    - Produced plausible but fake content
    - Inconsistent date ranges in results
 
-2. **Response Consistency**:
-   - Debug messages appearing in responses
-   - Repetitive content in single responses
-   - Internal JSON formatting visible to users
-   - Tool execution flow issues
-
-3. **Comparison with OpenAI Models**:
+2. **Comparison with OpenAI Models**:
    - Less accurate paper summaries
    - Lower quality of research analysis
    - More prone to fabricating details
@@ -156,7 +149,7 @@ While the integration of tools and API is functional, the locally hosted Mistral
 ### Future Improvements
 
 1. **Model Enhancement**:
-   - Experiment with different local models
+   - Experiment with different local models depending on the deployment server specs
    - Fine-tune for research paper analysis
    - Optimize for tool usage
    - Improve response formatting
@@ -168,8 +161,6 @@ While the integration of tools and API is functional, the locally hosted Mistral
    - Debug output filtering
 
 3. **Alternative Approaches**:
-   - Explore hybrid solutions (local + cloud)
-   - Simplify modular architecture
    - Enhance validation checks
    - Add fact-checking mechanisms
 
