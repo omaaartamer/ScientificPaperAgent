@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Research AI Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dark">
+    <div class="main">
+        <div class="chat-container">
+            <div class="welcome-message" id="welcome-message">
+                <h1><i class="fas fa-microscope"></i> Research AI Assistant</h1>
+                <p>Ask me anything about research papers. I can help you with:</p>
+                <ul>
+                    <li>Finding research papers</li>
+                    <li>Analyzing methodologies</li>
+                    <li>Summarizing findings</li>
+                    <li>Literature reviews</li>
+                    <li>Recent developments</li>
+                    <li>Research trends</li>
+                </ul>
+                <div class="example-queries">
+                    <p>Try these examples:</p>
+                    <button onclick="setQuery('Find 5 papers about quantum computing')" class="example-query">
+                        Find quantum papers
+                    </button>
+                    <button onclick="setQuery('Analyze ML in healthcare papers')" class="example-query">
+                        ML in Healthcare
+                    </button>
+                    <button onclick="setQuery('Summarize CRISPR papers')" class="example-query">
+                        CRISPR papers
+                    </button>
+                </div>
+            </div>
+            <div id="chat-box"></div>
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="user-input" 
+                        rows="1" 
+                        placeholder="Ask about research papers... (e.g., 'Find 5 papers about quantum computing')" 
+                        onInput="autoResize(this)"
+                    ></textarea>
+                    <button onclick="sendMessage()" id="send-button">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <i class="fas fa-info-circle"></i>
+                    Research AI Assistant - Built with LangChain Mistral and CORE_API
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
