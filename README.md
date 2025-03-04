@@ -65,7 +65,6 @@ This project implements a research assistant agent that can:
 1. Install dependencies:
 ```bash
 pip install -r requirements.txt
-Install Ollama and Mistral:
 ```
 2. Install Ollama and Mistral:
 ```bash
@@ -116,9 +115,9 @@ Project Structure
 
 - This implementation is based on the scientific research agent from [NirDiamant/GenAI_Agents](https://github.com/NirDiamant/GenAI_Agents), specifically their implementation of the Scientific Papers Researcher
 - Modified the original implementation to:
-  - Replace OpenAI with locally-hosted Mistral via Ollama
-  - Add Flask web interface
-  - Restructure code for modularity
+  - Replaced OpenAI with locally-hosted Mistral via Ollama
+  - Added Flask web interface
+  - Restructured code for modularity
 - Uses the CORE API for academic paper access
 - Built with LangGraph and Mistral
 
