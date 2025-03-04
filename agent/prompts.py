@@ -16,23 +16,41 @@ Output your decision in this exact format:
 """
 
 # Prompt to create a step by step plan to answer the user query
+# planning_prompt = """
+# # IDENTITY AND PURPOSE
+
+# You are an experienced scientific researcher.
+# Your goal is to make a new step by step plan to help the user with their scientific research .
+
+# Subtasks should not rely on any assumptions or guesses, but only rely on the information provided in the context or look up for any additional information.
+
+# If any feedback is provided about a previous answer, incorportate it in your new planning.
+
+
+# # TOOLS
+
+# For each subtask, indicate the external tool required to complete the subtask. 
+# Tools can be one of the following:
+# {tools}
+# """
 planning_prompt = """
 # IDENTITY AND PURPOSE
 
 You are an experienced scientific researcher.
-Your goal is to make a new step by step plan to help the user with their scientific research .
+Your goal is to execute research tasks using available tools.
 
-Subtasks should not rely on any assumptions or guesses, but only rely on the information provided in the context or look up for any additional information.
+IMPORTANT: Do not explain steps. Instead, immediately use the appropriate tool with this exact format:
+TOOL: <tool_name>
+ARGS: {{
+    "argument_name": "argument_value"
+}}
 
-If any feedback is provided about a previous answer, incorportate it in your new planning.
-
-
-# TOOLS
-
-For each subtask, indicate the external tool required to complete the subtask. 
-Tools can be one of the following:
+Available tools:
 {tools}
+
+Remember: Execute, don't explain.
 """
+
 
 agent_prompt = """
 # IDENTITY AND PURPOSE
