@@ -129,3 +129,48 @@ The original implementation and research was done by:
 
 This project maintains the core functionality and workflow of the original implementation while adapting it for web deployment and local LLM usage.
 
+## Known Limitations and Future Work
+
+### Local Model Performance
+
+While the integration of tools and API is functional, the locally hosted Mistral model shows some limitations:
+
+1. **Hallucinations**:
+   - Generated paper titles and authors that don't exist
+   - Created sequential DOI numbers
+   - Produced plausible but fake content
+   - Inconsistent date ranges in results
+
+2. **Response Consistency**:
+   - Debug messages appearing in responses
+   - Repetitive content in single responses
+   - Internal JSON formatting visible to users
+   - Tool execution flow issues
+
+3. **Comparison with OpenAI Models**:
+   - Less accurate paper summaries
+   - Lower quality of research analysis
+   - More prone to fabricating details
+   - Less reliable tool usage
+
+### Future Improvements
+
+1. **Model Enhancement**:
+   - Experiment with different local models
+   - Fine-tune for research paper analysis
+   - Optimize for tool usage
+   - Improve response formatting
+
+2. **Integration Refinement**:
+   - Better state management
+   - Cleaner response handling
+   - Improved error handling
+   - Debug output filtering
+
+3. **Alternative Approaches**:
+   - Explore hybrid solutions (local + cloud)
+   - Simplify modular architecture
+   - Enhance validation checks
+   - Add fact-checking mechanisms
+
+Note: For production use cases requiring high accuracy and reliability, consider using OpenAI's models or other cloud-based solutions.
