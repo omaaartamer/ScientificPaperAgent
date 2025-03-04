@@ -12,3 +12,4 @@ pydantic
 ollama
 requests
 markdown
+    
