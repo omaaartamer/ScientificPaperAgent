@@ -48,6 +48,7 @@ def planning_node(state: AgentState):
     response = mistral.llm.invoke(messages_str)
     return {"messages": [AIMessage(content=response)]}
 
+
 def tools_node(state: AgentState):
     """Tool call node that executes the tools based on the plan."""
     outputs = []
@@ -71,23 +72,16 @@ def agent_node(state: AgentState):
     tool_outputs = [msg for msg in state["messages"] if isinstance(msg, ToolMessage)]
     
     if tool_outputs:
-        papers_info = []
-        for tool_msg in tool_outputs:
-            try:
-                papers_info.append(tool_msg.content)
-            except Exception as e:
-                print(f"Error processing tool output: {e}")
-                continue
-        
-        summary_prompt = f"""
-        Process and summarize the following research results:
-        {papers_info}
-        """
+        # Process tool outputs and generate summary
+        papers_info = [tool_msg.content for tool_msg in tool_outputs]
+        summary_prompt = f"Process and summarize the following research results:\n{papers_info}"
         summary = agent_llm(summary_prompt)
         return {"messages": [AIMessage(content=summary)]}
     else:
+        # Handle initial query or follow-up
         response = agent_llm(messages_str)
         
+        # Check for tool calls in response
         if "TOOL:" in response:
             tool_lines = response.split("\n")
             tool_name = None
@@ -100,7 +94,7 @@ def agent_node(state: AgentState):
                     try:
                         tool_args = json.loads(line.replace("ARGS:", "").strip())
                     except json.JSONDecodeError:
-                        print(f"Error parsing tool arguments: {line}")
+                        continue
             
             if tool_name and tool_args:
                 return {"messages": [AIMessage(
